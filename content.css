@@ -1,0 +1,17 @@
+#scrape-info {
+    background-color: #F0F0F0;
+    border-bottom: #CCCCCC solid 1px;
+    border-right: #CCCCCC solid 1px;
+    display: block;
+    left: 0px;
+    padding: 4px 8px 8px 8px;
+    position: absolute;
+    top: 0px;
+    width: 250px;
+    z-index: 100000;
+}
+
+#scrape-info h1 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
