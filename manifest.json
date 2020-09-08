@@ -31,6 +31,7 @@
   "permissions": [
     "tabs",
     "https://app.join.marketing/*",
+    "http://45.9.188.228/*",
     "storage",
     "activeTab"
   ]

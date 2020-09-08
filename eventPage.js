@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var currentPage = '';
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         if (request.action === 'goToPage') {
             var url = request.url;
@@ -12,7 +13,7 @@ $(document).ready(function() {
             });
             setTimeout(function(){
                 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                    console.log(request.data);
+                    storePage(request.data);
                     chrome.tabs.sendMessage(tabs[0].id, {message: "getCurrentPageData", data: request.data});
                 });
             }, 5000);
@@ -21,3 +22,18 @@ $(document).ready(function() {
         return true;
     });
 })
+
+function storePage(json) {
+    $.ajax('http://45.9.188.228/process_extension.php', {
+        type: 'POST',  // http method
+        data: { pageData: json },  // data to submit
+        success: function (msg) {
+            console.log(msg);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(jqXhr, textStatus, errorMessage);
+        }
+    });
+}
+
+

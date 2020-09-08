@@ -10,10 +10,10 @@ $(document).ready(function() {
                 var i = 0;
                 $.each(pages, function(key){
                     setTimeout(function(){
-                        count += 1;
+                        currentPage = key;
+                        scrollDown();
                         getNextPage('span:contains('+key+')');
                         incrementCount();
-                        currentPage = key;
                     },i);
                     i += 12500;
                 });
@@ -48,10 +48,14 @@ $(document).ready(function() {
     }
 
     function incrementCount() {
-        var newCount = parseInt($('#count').text()) + 1;
-        $('#count').remove();
+        const count = $('#count');
+        var newCount = parseInt(count.text()) + 1;
+        count.remove();
         $("#scrape-info").append('<p id="count">'+newCount+'</p>');
     }
 
+    function scrollDown() {
+        $('html, body').scrollTop($(document).height());
+    }
 });
 
